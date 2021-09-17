@@ -1,9 +1,9 @@
-import * as React from "react";
 import { memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
 import { Input } from "../atoms/Input";
 import { Button } from "../atoms/Button";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,11 +19,11 @@ export const Login = memo(() => {
         titleBlock={
           <div className="login-title">
             <Link className="for-link" to={"/login"}>
-              <Title title={"Login"} />{" "}
+              <Title title={"Login"} isActive={true} />{" "}
             </Link>
-            <Title title={" | "} />
+            <Title title={" | "} isActive={true} />
             <Link className="for-link" to={"/registration"}>
-              <Title title={"Registration"} />
+              <Title title={"Registration"} isActive={false} />
             </Link>
           </div>
         }

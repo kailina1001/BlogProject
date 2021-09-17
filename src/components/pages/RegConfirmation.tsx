@@ -16,7 +16,9 @@ export const RegConfirmation = memo(() => {
   return (
     <div className="">
       <MainTemplate
-        titleBlock={<Title title={"Registration Confirmation"} />}
+        titleBlock={
+          <Title title={"Registration Confirmation"} isActive={true} />
+        }
         mainBlock={
           <div>
             <div className="inputs-wrapper">
@@ -30,7 +32,7 @@ export const RegConfirmation = memo(() => {
                 </p>
                 <p>Please, check your email</p>
               </div>
-              <Link className="for-link" to={"/home"}>
+              <Link className="for-link" to={"/"}>
                 <Button text={"Home"} />
               </Link>
             </div>

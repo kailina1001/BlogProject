@@ -19,11 +19,11 @@ export const Registration = memo(() => {
         titleBlock={
           <div className="login-title">
             <Link className="for-link" to={"/login"}>
-              <Title title={"Login"} />{" "}
+              <Title title={"Login"} isActive={false} />{" "}
             </Link>
-            <Title title={" | "} />
+            <Title title={" | "} isActive={true} />
             <Link className="for-link" to={"/registration"}>
-              <Title title={"Registration"} />
+              <Title title={"Registration"} isActive={true} />
             </Link>
           </div>
         }

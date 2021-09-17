@@ -13,25 +13,28 @@ import {
 export const Header = memo(() => {
   return (
     <div className="header-wrapper">
-      <nav>
-        <div className="burger-btn">
-          <span />
-        </div>
-        <div>
+      <input type="checkbox" id="check-menu" />
+      <label htmlFor="check-menu"></label>
+      <div className="burger-line first"></div>
+      <div className="burger-line second"></div>
+      <div className="burger-line third"></div>
+      <div className="burger-line fourth"></div>
+      <nav className="main-menu">
+        <div className="navigation-wrapper">
           <ul className="text-navigation">
             <li>
-              <Link className="for-link" to={"/home"}>
+              <Link className="for-link" to={"/"}>
                 Home
               </Link>
             </li>
             <li>
               <Link className="for-link" to={"/login"}>
-                login
+                Login
               </Link>
             </li>
             <li>
               <Link className="for-link" to={"/registration"}>
-                registration
+                Registration
               </Link>
             </li>
             <li>
@@ -61,13 +64,24 @@ export const Header = memo(() => {
             </li>
             <li>
               <Link className="for-link" to={"/success-new-password"}>
-                SuccessNewPassword
+                Success New Password
               </Link>
             </li>
           </ul>
         </div>
+        {/* <a href="#" className="link">
+          Пункт 1
+        </a>
+        <a href="#" className="link">
+          Пункт 2
+        </a>
+        <a href="#" className="link">
+          Пункт 3
+        </a>
+        <a href="#" className="link">
+          Пункт 4
+        </a> */}
       </nav>
-      {/* <BurgerMenu /> */}
     </div>
   );
 });

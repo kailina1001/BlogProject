@@ -16,7 +16,7 @@ export const SuccessRegistration = memo(() => {
   return (
     <div className="">
       <MainTemplate
-        titleBlock={<Title title={"Success"} />}
+        titleBlock={<Title title={"Success"} isActive={true} />}
         mainBlock={
           <div>
             <div className="inputs-wrapper">

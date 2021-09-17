@@ -26,7 +26,7 @@ function App() {
     <div className="app">
       <Router>
         <Switch>
-          <Route exact path="/home">
+          <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/login">

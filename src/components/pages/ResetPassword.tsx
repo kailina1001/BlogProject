@@ -16,7 +16,7 @@ export const ResetPassword = memo(() => {
   return (
     <div className="">
       <MainTemplate
-        titleBlock={<Title title={"Reset password"} />}
+        titleBlock={<Title title={"Reset password"} isActive={true} />}
         mainBlock={
           <div>
             <div className="inputs-wrapper">

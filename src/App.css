@@ -425,6 +425,13 @@ textarea {
 
 .for-link {
   text-decoration: none;
+  color: #007bff;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
 }
 
 .page-text {
@@ -435,7 +442,38 @@ textarea {
   width: 300px;
 }
 
-.main-page-text {
-  width: 500px;
+.home-text {
+  max-width: 500px;
   margin-bottom: 62px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 134%;
+  letter-spacing: 0.03em;
+  color: #254050;
+  max-width: 500px;
+  margin-bottom: 62px;
+}
+
+.home-title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: black;
+  margin-bottom: 53px;
+}
+
+.home-title span {
+  color: #016efc;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 105px;
 }
