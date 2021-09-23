@@ -10,12 +10,18 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
 } from "react-router-dom";
 import { Header } from "../molecules/Header";
 
 export const Home = memo(() => {
+  const history = useHistory();
+  const handlerChangePage = () => {
+    history.push("/login");
+  };
+
   return (
-    <div>
+    <div className="home-page-wrapper">
       <Header />
       <div className="home-page">
         <h2 className="home-title">
@@ -27,9 +33,12 @@ export const Home = memo(() => {
             industry. Lorem Ipsum has been the ...
           </p>
         </div>
-        <Link className="for-link" to={"/login"}>
-          <Button text={"Learn more"} />
-        </Link>
+
+        <Button
+          text={"Learn more"}
+          onClick={handlerChangePage}
+          isValid={true}
+        />
       </div>
     </div>
   );

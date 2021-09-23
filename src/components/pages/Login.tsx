@@ -10,9 +10,30 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getLoginSelector } from "../../core/selectors/loginSelectors";
+import { validateEmail, validatePassword } from "../helper/helpers";
+import {
+  setEmailLoginAction,
+  setPasswordLoginAction,
+} from "../../core/actions/loginActions";
 
 export const Login = memo(() => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { password_login, email_login } = useSelector(getLoginSelector);
+
+  const isValidEmailLogin = validateEmail(email_login);
+  const isValidPasswordLogin = validatePassword(password_login);
+
+  const loginUser = () => {
+    if (isValidEmailLogin) {
+      history.push("/");
+    }
+  };
+
   return (
     <div className="">
       <MainTemplate
@@ -30,9 +51,29 @@ export const Login = memo(() => {
         mainBlock={
           <div className="inputs-wrapper">
             <form>
-              <Input searchValue={" "} text={"Email"} type={"email"} />
-              <Input searchValue={" "} text={"Password"} type={"password"} />
-              <Button text={"Login"} />
+              <Input
+                text={"Email"}
+                type={"email"}
+                value={email_login}
+                isValid={isValidEmailLogin}
+                onChangeHandler={(text: string) =>
+                  dispatch(setEmailLoginAction(text.trim()))
+                }
+              />
+              <Input
+                text={"Password"}
+                type={"password"}
+                value={password_login}
+                isValid={isValidPasswordLogin}
+                onChangeHandler={(text: string) =>
+                  dispatch(setPasswordLoginAction(text.trim()))
+                }
+              />
+              <Button
+                text={"Login"}
+                isValid={isValidEmailLogin && isValidPasswordLogin}
+                onClick={loginUser}
+              />
             </form>
             <p>
               Forgot your password?{" "}

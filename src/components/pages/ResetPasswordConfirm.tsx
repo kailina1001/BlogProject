@@ -10,9 +10,18 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getResetPasswordSelector } from "../../core/selectors/resetPasswordSelectors";
 
 export const ResetPasswordConfirm = memo(() => {
+  const history = useHistory();
+  const handlerChangePage = () => {
+    history.push("/");
+  };
+
+  const { email_reset_password } = useSelector(getResetPasswordSelector);
   return (
     <div className="">
       <MainTemplate
@@ -23,15 +32,20 @@ export const ResetPasswordConfirm = memo(() => {
               <div className="page-text">
                 <p>
                   You will receive an email{" "}
-                  <a href="#" className="confirmation-link">
-                    test@gmail.com
+                  <a
+                    href={`mailto:${email_reset_password}`}
+                    className="confirmation-link"
+                  >
+                    {email_reset_password}
                   </a>
                 </p>
                 <p>with a link to reset your password</p>
               </div>
-              <Link className="for-link" to={"/"}>
-                <Button text={"Home"} />
-              </Link>
+              <Button
+                text={"Home"}
+                onClick={handlerChangePage}
+                isValid={true}
+              />
             </div>
           </div>
         }

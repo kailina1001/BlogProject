@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { useCallback, useEffect } from "react";
 import { memo } from "react";
-import { BurgerMenu } from "../BurgerMenu";
 import "./index.css";
 import {
   BrowserRouter as Router,
@@ -9,8 +8,26 @@ import {
   Link,
   Redirect,
 } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsOpenHeader } from "../../../core";
+import { getAppState } from "../../../core/selectors/appSelectors";
+import { Title } from "../../atoms/Title/Title";
 
 export const Header = memo(() => {
+  const { isOpenHeader } = useSelector(getAppState);
+  console.log({ isOpenHeader });
+
+  const dispatch = useDispatch();
+
+  const toggleMenu = useCallback(() => {
+    dispatch(setIsOpenHeader(!isOpenHeader));
+  }, [dispatch, isOpenHeader]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setIsOpenHeader(false));
+    };
+  }, [dispatch]);
   return (
     <div className="header-wrapper">
       <input type="checkbox" id="check-menu" />
@@ -69,19 +86,35 @@ export const Header = memo(() => {
             </li>
           </ul>
         </div>
-        {/* <a href="#" className="link">
-          Пункт 1
-        </a>
-        <a href="#" className="link">
-          Пункт 2
-        </a>
-        <a href="#" className="link">
-          Пункт 3
-        </a>
-        <a href="#" className="link">
-          Пункт 4
-        </a> */}
       </nav>
     </div>
+
+    /*  <div className={"header-title"}>
+        <button className="menu-btn" onClick={toggleMenu}>
+          <div id="hamburger" className={isOpenHeader ? "open" : ""}>
+            <div></div>
+          </div>
+        </button>
+
+        <Title title={"Header"} isActive={true} />
+      </div>
+
+      {isOpenHeader && (
+        <nav>
+          <ul className={"menu"}>
+            <li>
+              <Link className={"app"} to="/">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/users/:id">User</Link>
+            </li>
+            <li>
+              <Link to="/users">Users </Link>
+            </li>
+          </ul>
+        </nav>
+      )} */
   );
 });
