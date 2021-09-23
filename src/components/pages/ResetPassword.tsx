@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
@@ -24,6 +24,12 @@ export const ResetPassword = memo(() => {
   const { email_reset_password } = useSelector(getResetPasswordSelector);
 
   const isValidEmailResetPassword = validateEmail(email_reset_password);
+
+  useEffect(() => {
+    return () => {
+      dispatch(setEmailResetPasswordAction(""));
+    };
+  }, [dispatch]);
 
   const resetPassword = () => {
     if (isValidEmailResetPassword) {

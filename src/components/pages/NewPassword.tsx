@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
@@ -34,6 +34,13 @@ export const NewPassword = memo(() => {
     new_password,
     new_password_confirm
   );
+
+  useEffect(() => {
+    return () => {
+      dispatch(setNewPasswordAction(""));
+      dispatch(setNewPasswordConfirmAction(""));
+    };
+  }, [dispatch]);
 
   const newPasswordUser = () => {
     if (isValidNewPassword && isValidNewPasswordConfirm) {

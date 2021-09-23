@@ -28,6 +28,13 @@ export const Login = memo(() => {
   const isValidEmailLogin = validateEmail(email_login);
   const isValidPasswordLogin = validatePassword(password_login);
 
+  useEffect(() => {
+    return () => {
+      dispatch(setEmailLoginAction(""));
+      dispatch(setPasswordLoginAction(""));
+    };
+  }, [dispatch]);
+
   const loginUser = () => {
     if (isValidEmailLogin) {
       history.push("/");
