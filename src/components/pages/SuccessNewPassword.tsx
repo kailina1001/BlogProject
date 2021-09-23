@@ -10,9 +10,14 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
 } from "react-router-dom";
 
 export const SuccessNewPassword = memo(() => {
+  const history = useHistory();
+  const handlerChangePage = () => {
+    history.push("/login");
+  };
   return (
     <div className="">
       <MainTemplate
@@ -24,9 +29,11 @@ export const SuccessNewPassword = memo(() => {
                 <p>Email confirmed.</p>
                 <p>Your registration is now completed </p>
               </div>
-              <Link className="for-link" to={"/login"}>
-                <Button text={"Login"} />
-              </Link>
+              <Button
+                text={"Login"}
+                onClick={handlerChangePage}
+                isValid={true}
+              />
             </div>
           </div>
         }

@@ -10,9 +10,18 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
 } from "react-router-dom";
+import { getRegistrationSelector } from "../../core/selectors/registrationSelectors";
+import { useSelector } from "react-redux";
 
 export const RegConfirmation = memo(() => {
+  const history = useHistory();
+  const handlerChangePage = () => {
+    history.push("/");
+  };
+
+  const { email } = useSelector(getRegistrationSelector);
   return (
     <div className="">
       <MainTemplate
@@ -26,15 +35,17 @@ export const RegConfirmation = memo(() => {
                 <p>Please activate your account with</p>
                 <p>
                   the activation link in the email{" "}
-                  <a href="#" className="confirmation-link">
-                    test@gmail.com
+                  <a href={`mailto:${email}`} className="confirmation-link">
+                    {email}
                   </a>
                 </p>
                 <p>Please, check your email</p>
               </div>
-              <Link className="for-link" to={"/"}>
-                <Button text={"Home"} />
-              </Link>
+              <Button
+                text={"Home"}
+                onClick={handlerChangePage}
+                isValid={true}
+              />
             </div>
           </div>
         }

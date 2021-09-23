@@ -4,11 +4,18 @@ import "./index.css";
 
 interface IButton {
   text: string;
+  isValid: boolean;
+  onClick: () => void;
 }
 
-export const Button = memo(({ text }: IButton) => {
+export const Button = memo(({ text, isValid, onClick }: IButton) => {
   return (
-    <button className="button-wrapper" type="submit">
+    <button
+      type="submit"
+      className={isValid ? "button-wrapper" : "button-wrapper _disable"}
+      disabled={!isValid}
+      onClick={() => onClick()}
+    >
       {text}
     </button>
   );
