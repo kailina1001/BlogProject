@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import { memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
@@ -13,15 +13,31 @@ import {
   useHistory,
 } from "react-router-dom";
 import { getRegistrationSelector } from "../../core/selectors/registrationSelectors";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setEmailAction,
+  setUserNameAction,
+  setPasswordAction,
+  setConfirmPasswordAction,
+} from "../../core";
 
 export const RegConfirmation = memo(() => {
+  const { email } = useSelector(getRegistrationSelector);
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const handlerChangePage = () => {
     history.push("/");
   };
+  useEffect(() => {
+    return () => {
+      dispatch(setEmailAction(""));
+      dispatch(setUserNameAction(""));
+      dispatch(setPasswordAction(""));
+      dispatch(setConfirmPasswordAction(""));
+    };
+  }, [dispatch]);
 
-  const { email } = useSelector(getRegistrationSelector);
   return (
     <div className="">
       <MainTemplate
