@@ -22,9 +22,9 @@ import { SuccessNewPassword } from "./components/pages/SuccessNewPassword";
 import { Home } from "./components/pages/Home";
 import { PrivateRoute } from "./router/PrivateRoute";
 import { PublicRoute } from "./router/PublicRoute";
-import { User } from "./components/pages/User";
-import { Users } from "./components/pages/Users";
 import { NotFound } from "./components/pages/NotFound";
+import { AllPosts } from "./components/pages/AllPosts";
+import { MyPosts } from "./components/pages/MyPosts";
 
 function App() {
   return (
@@ -58,8 +58,9 @@ function App() {
             exact
           />
 
-          <PublicRoute component={User} path="/users/:id" exact />
-          <PublicRoute component={Users} path="/users" exact />
+          <PublicRoute component={AllPosts} path="/all-posts" exact />
+          <PublicRoute component={MyPosts} path="/my-posts" exact />
+          {/*           <PublicRoute component={AddPosts} path="/add-posts" exact /> */}
           <PublicRoute component={NotFound} exact />
         </Switch>
       </div>

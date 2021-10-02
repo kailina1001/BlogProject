@@ -1,0 +1,11 @@
+.post-date {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+
+  color: #016efc;
+}

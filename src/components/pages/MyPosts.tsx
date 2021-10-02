@@ -12,26 +12,31 @@ import {
   useHistory,
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
-import { FoldedPost } from "../molecules/FoldedPost";
+import { PostCard } from "../molecules/PostCard";
 
 export const MyPosts = memo(() => {
   const history = useHistory();
-  const allPosts = () => {
+  /* const allPosts = () => {
     history.push("/");
-  };
+  }; */
   return (
-    <BlogTemplate
-      titleBlock={
-        <div className="blog-template-title">
-          <Title title={"My posts"} isActive={true} />
-          <AddBtn text={"+ Add"} />
-        </div>
-      }
-      mainBlock={
-        <div className="blog-template-body">
-          <FoldedPost />
-        </div>
-      }
-    />
+    <div className="all-posts-page">
+      <BlogTemplate
+        titleBlock={
+          <div className="blog-template-title">
+            <Title title={"My posts"} isActive={true} />
+            <AddBtn text={"+ Add"} />
+          </div>
+        }
+        mainBlock={
+          <div className="blog-template-body">
+            <PostCard />
+            <PostCard />
+            <PostCard />
+            <PostCard />
+          </div>
+        }
+      />
+    </div>
   );
 });

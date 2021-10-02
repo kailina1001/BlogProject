@@ -490,3 +490,22 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
+.all-posts-page {
+}
+
+.blog-template-title {
+  margin-top: 49px;
+  margin-left: 112px;
+  display: flex;
+}
+
+.blog-template-body {
+  margin-left: 112px;
+  margin-right: 219px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 341px);
+  grid-gap: 41px;
+  gap: 41px;
+  margin-bottom: 29px;
+}
