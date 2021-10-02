@@ -5,13 +5,13 @@ import { setEmailLoginAction } from "../actions/loginActions";
 import { setPasswordLoginAction } from "../actions/loginActions";
 
 export interface ILoginState {
-  email_login: string;
-  password_login: string;
+  email: string;
+  password: string;
 }
 
 const defaultState: ILoginState = {
-  email_login: "",
-  password_login: "",
+  email: "",
+  password: "",
 };
 
 const actions = {
@@ -23,14 +23,11 @@ export const loginReducer = createReducer<
   ILoginState,
   ActionType<typeof actions>
 >(defaultState)
-  .handleAction(setEmailLoginAction, (state, { payload: email_login }) => ({
+  .handleAction(setEmailLoginAction, (state, { payload: email }) => ({
     ...state,
-    email_login,
+    email,
   }))
-  .handleAction(
-    setPasswordLoginAction,
-    (state, { payload: password_login }) => ({
-      ...state,
-      password_login,
-    })
-  );
+  .handleAction(setPasswordLoginAction, (state, { payload: password }) => ({
+    ...state,
+    password,
+  }));

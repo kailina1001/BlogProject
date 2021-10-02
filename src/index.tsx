@@ -5,6 +5,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { store } from "./core";
+import { AuthService } from "./services/AuthService";
+
+AuthService.setCredentials({
+  URL: "https://studapi.teachmeskills.by",
+});
+AuthService.prefix = "auth";
 
 ReactDOM.render(
   <React.StrictMode>

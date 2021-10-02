@@ -333,6 +333,11 @@ textarea {
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  background: url(./components/img/cloud.png) no-repeat;
+  background-position: 100% 100%;
+  background-size: contain;
+  flex: 1 1 auto;
 }
 
 .login-text {

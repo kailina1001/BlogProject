@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
@@ -11,6 +11,7 @@ import {
   Link,
   Redirect,
   useHistory,
+  useParams,
 } from "react-router-dom";
 import { getRegistrationSelector } from "../../core/selectors/registrationSelectors";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,13 +20,17 @@ import {
   setUserNameAction,
   setPasswordAction,
   setConfirmPasswordAction,
+  sendRegistrationConfirmationAction,
 } from "../../core";
+
+const renderTitle = () => {
+  return <Title title={"Confirmation Registration"} isActive={false} />;
+};
 
 export const RegConfirmation = memo(() => {
   const { email } = useSelector(getRegistrationSelector);
   const history = useHistory();
   const dispatch = useDispatch();
-
   const handlerChangePage = () => {
     history.push("/");
   };
@@ -38,8 +43,17 @@ export const RegConfirmation = memo(() => {
     };
   }, [dispatch]);
 
+  const params = useParams() as any;
+  console.log({ params });
+
+  useEffect(() => {
+    if (params?.uid && params?.token) {
+      dispatch(sendRegistrationConfirmationAction(params));
+    }
+  }, [dispatch, params, params?.token, params?.uid]);
+
   return (
-    <div className="">
+    <div>
       <MainTemplate
         titleBlock={
           <Title title={"Registration Confirmation"} isActive={true} />
@@ -69,3 +83,11 @@ export const RegConfirmation = memo(() => {
     </div>
   );
 });
+
+/*   return (
+    <MainTemplate
+      titleBlock={renderTitle()}
+      mainBlock={<Title title={"Successfully!"} isActive={true} />}
+    />
+  );
+}); */

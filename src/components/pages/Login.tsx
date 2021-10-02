@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getLoginSelector } from "../../core/selectors/loginSelectors";
 import { validateEmail, validatePassword } from "../helper/helpers";
 import {
+  sendLoginDataAction,
   setEmailLoginAction,
   setPasswordLoginAction,
 } from "../../core/actions/loginActions";
@@ -23,10 +24,10 @@ import {
 export const Login = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { password_login, email_login } = useSelector(getLoginSelector);
+  const { password, email } = useSelector(getLoginSelector);
 
-  const isValidEmailLogin = validateEmail(email_login);
-  const isValidPasswordLogin = validatePassword(password_login);
+  const isValidEmailLogin = validateEmail(email);
+  const isValidPasswordLogin = validatePassword(password);
 
   useEffect(() => {
     return () => {
@@ -36,13 +37,23 @@ export const Login = memo(() => {
   }, [dispatch]);
 
   const loginUser = () => {
+    if (isValidEmailLogin && isValidPasswordLogin) {
+      dispatch(
+        sendLoginDataAction({
+          password,
+          email,
+        })
+      );
+    }
+  };
+  /*   const loginUser = () => {
     if (isValidEmailLogin) {
       history.push("/");
     }
-  };
+  }; */
 
   return (
-    <div className="">
+    <div className="login-page">
       <MainTemplate
         titleBlock={
           <div className="login-title">
@@ -61,7 +72,7 @@ export const Login = memo(() => {
               <Input
                 text={"Email"}
                 type={"email"}
-                value={email_login}
+                value={email}
                 isValid={isValidEmailLogin}
                 onChangeHandler={(text: string) =>
                   dispatch(setEmailLoginAction(text.trim()))
@@ -70,7 +81,7 @@ export const Login = memo(() => {
               <Input
                 text={"Password"}
                 type={"password"}
-                value={password_login}
+                value={password}
                 isValid={isValidPasswordLogin}
                 onChangeHandler={(text: string) =>
                   dispatch(setPasswordLoginAction(text.trim()))

@@ -45,6 +45,22 @@ export const Header = memo(() => {
               </Link>
             </li>
             <li>
+              <Link className="for-link" to={"/all-posts"}>
+                All Posts
+              </Link>
+            </li>
+            <li>
+              <Link className="for-link" to={"/my-posts"}>
+                My Posts
+              </Link>
+            </li>
+            <li>
+              <Link className="for-link" to={"/add-posts"}>
+                + Add Posts
+              </Link>
+            </li>
+
+            <li>
               <Link className="for-link" to={"/login"}>
                 Login
               </Link>

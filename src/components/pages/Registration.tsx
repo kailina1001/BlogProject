@@ -25,12 +25,13 @@ import {
   setUserNameAction,
   setPasswordAction,
   setConfirmPasswordAction,
+  sendRegistrationDataAction,
 } from "../../core/actions/registrationActions";
 
 export const Registration = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { password, email, confirmPassword, userName } = useSelector(
+  const { password, email, confirmPassword, userName, error } = useSelector(
     getRegistrationSelector
   );
 
@@ -43,8 +44,20 @@ export const Registration = memo(() => {
   );
 
   const registrationUser = () => {
-    if (isValidUserName && isValidEmail) {
-      history.push("/reg-confirmation");
+    if (
+      isValidUserName &&
+      isValidEmail &&
+      isValidPassword &&
+      isValidConfirmPassword
+    ) {
+      dispatch(
+        sendRegistrationDataAction({
+          username: userName,
+          password,
+          email,
+        })
+      );
+      /*  history.push("/reg-confirmation"); */
     }
   };
 
@@ -100,18 +113,18 @@ export const Registration = memo(() => {
                 dispatch(setConfirmPasswordAction(text.trim()))
               }
             />
-            <Link className="for-link" to={"/reg-confirmation"}>
-              <Button
-                text={"Login"}
-                isValid={
-                  isValidUserName &&
-                  isValidEmail &&
-                  isValidPassword &&
-                  isValidConfirmPassword
-                }
-                onClick={registrationUser}
-              />
-            </Link>
+            <p>{error}</p>
+            {/*       <Link className="for-link" to={"/reg-confirmation"}> */}
+            <Button
+              text={"Login"}
+              isValid={
+                isValidUserName &&
+                isValidEmail &&
+                isValidPassword &&
+                isValidConfirmPassword
+              }
+              onClick={registrationUser}
+            />
 
             <p className="login-text">
               If you have account, you can{" "}

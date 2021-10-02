@@ -1,0 +1,1 @@
+export { FoldedPost } from "./FoldedPost";
