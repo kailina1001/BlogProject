@@ -1,0 +1,13 @@
+.back-btn {
+  width: 166px;
+  height: 29px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  border: none;
+  background-color: #0060dc;
+}

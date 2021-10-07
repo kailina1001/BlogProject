@@ -36,13 +36,18 @@ export const AllPosts = memo(({ post }: IPostList) => {
 
   console.log("Posts:", { posts });
 
+  const history = useHistory();
+  const addPost = () => {
+    history.push("/add-posts");
+  };
+
   return (
     <div className="all-posts-page">
       <BlogTemplate
         titleBlock={
           <div className="blog-template-title">
             <Title title={"All posts"} isActive={true} />
-            <AddBtn text={"+ Add"} />
+            <AddBtn text={"+ Add"} onClick={addPost} />
           </div>
         }
         mainBlock={

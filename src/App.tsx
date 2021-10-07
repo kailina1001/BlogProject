@@ -25,6 +25,7 @@ import { PublicRoute } from "./router/PublicRoute";
 import { NotFound } from "./components/pages/NotFound";
 import { AllPosts } from "./components/pages/AllPosts";
 import { MyPosts } from "./components/pages/MyPosts";
+import { AddPost } from "./components/pages/AddPost";
 
 function App() {
   return (
@@ -42,7 +43,6 @@ function App() {
           <PublicRoute
             component={SuccessRegistration}
             path="/activate/:uid/:token"
-            /*  path="/success-registration" */
             exact
           />
           <PublicRoute component={ResetPassword} path="/reset-password" exact />
@@ -60,7 +60,7 @@ function App() {
 
           <PublicRoute component={AllPosts} path="/all-posts" exact />
           <PublicRoute component={MyPosts} path="/my-posts" exact />
-          {/*           <PublicRoute component={AddPosts} path="/add-posts" exact /> */}
+          <PublicRoute component={AddPost} path="/add-posts" exact />
           <PublicRoute component={NotFound} exact />
         </Switch>
       </div>

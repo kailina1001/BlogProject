@@ -57,7 +57,7 @@ export const Registration = memo(() => {
           email,
         })
       );
-      /*  history.push("/reg-confirmation"); */
+      history.push("/reg-confirmation");
     }
   };
 

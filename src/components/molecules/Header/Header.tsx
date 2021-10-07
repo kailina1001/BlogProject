@@ -44,7 +44,7 @@ export const Header = memo(() => {
                 Home
               </Link>
             </li>
-            <li>
+            {/*  <li>
               <Link className="for-link" to={"/all-posts"}>
                 All Posts
               </Link>
@@ -58,7 +58,7 @@ export const Header = memo(() => {
               <Link className="for-link" to={"/add-posts"}>
                 + Add Posts
               </Link>
-            </li>
+            </li> */}
 
             <li>
               <Link className="for-link" to={"/login"}>
@@ -70,7 +70,7 @@ export const Header = memo(() => {
                 Registration
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className="for-link" to={"/reg-confirmation"}>
                 Registration Confirmation
               </Link>
@@ -99,7 +99,7 @@ export const Header = memo(() => {
               <Link className="for-link" to={"/success-new-password"}>
                 Success New Password
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
