@@ -1,6 +1,5 @@
 import React from "react";
 import { memo } from "react";
-import { Button } from "../atoms/Button";
 import { Title } from "../atoms/Title";
 import { BlogTemplate } from "../template/BlogTemplate";
 import {
@@ -12,11 +11,17 @@ import {
   useHistory,
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
-import { PostCard } from "../molecules/PostCard";
+import { IPost } from "../../types/posts";
+import { posts } from "../../mock/index";
+import { MyPostCard } from "../molecules/MyPostCard";
 
-export const MyPosts = memo(() => {
-  const history = useHistory();
-  /* const allPosts = () => {
+interface IPostList {
+  post: IPost[];
+}
+
+export const MyPosts = memo(({ post }: IPostList) => {
+  /*   const history = useHistory();
+  const allPosts = () => {
     history.push("/");
   }; */
   return (
@@ -30,10 +35,11 @@ export const MyPosts = memo(() => {
         }
         mainBlock={
           <div className="blog-template-body">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {posts?.map((post) => (
+              <div key={post.id}>
+                {/*  <MyPostCard key={post.id} {...post} /> */}
+              </div>
+            ))}
           </div>
         }
       />

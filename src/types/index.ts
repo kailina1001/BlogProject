@@ -1,12 +1,11 @@
-export interface IUser {
+export interface IPost {
   id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-  age: number;
+  image: string;
+  title: string;
+  text: string;
+  date: string;
+  author: string;
 }
-// string[]
 
 export interface ISettingsSort {
   title: string;

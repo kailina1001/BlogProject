@@ -12,9 +12,9 @@ export const setPasswordLoginAction = createAction(
   ACTIONS.SET_PASSWORD_LOGIN
 )<string>();
 
-export const setConfirmPasswordAction = createAction(
+/* export const setConfirmPasswordAction = createAction(
   ACTIONS.SET_CONFIRM_PASSWORD
-)<string>();
+)<string>(); */
 
 export const sendLoginDataAction = createAction(
   ACTIONS.SEND_LOGIN_DATA
@@ -22,4 +22,8 @@ export const sendLoginDataAction = createAction(
 
 export const sendLoginDataErrorAction = createAction(
   ACTIONS.SEND_LOGIN_DATA_ERROR
-)<any>();
+)<string | null>();
+
+export const sendLoginDataSuccessAction = createAction(
+  ACTIONS.SEND_LOGIN_DATA_SUCCESS
+)<boolean>();

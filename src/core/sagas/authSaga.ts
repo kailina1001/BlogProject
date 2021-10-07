@@ -1,8 +1,10 @@
+import { setProfileAction } from "./../actions/appActions";
+import { sendLoginDataSuccessAction } from "./../actions/loginActions";
 import { IRegistrationState } from "./../reducers/registrationReducer";
 import { getRegistrationSelector } from "./../selectors/registrationSelectors";
 import { setUserNameAction } from "./../actions/registrationActions";
 import { Action } from "redux-actions";
-import { IActivationPayload, IUserAuth } from "../../types/user";
+import { IActivationPayload, ITokens, IUserAuth } from "../../types/user";
 import { ACTIONS } from "../actions/constants";
 import { call, put, takeEvery, select } from "redux-saga/effects";
 import { sendRegistrationDataErrorAction } from "./../actions/registrationActions";
@@ -39,26 +41,6 @@ function* registrationSaga({
   }
 }
 
-function* loginSaga({
-  payload: { username, password, email },
-}: Action<IUserAuth>) {
-  try {
-    const { email, password }: IRegistrationState = yield select(
-      getLoginSelector
-    );
-
-    yield call(() =>
-      AuthService.login({
-        password,
-        email,
-      })
-    );
-  } catch (e) {
-    yield put(setUserNameAction(""));
-    yield put(sendLoginDataErrorAction({ e }));
-  }
-}
-
 function* confirmationRegistrationSaga({
   payload: { token, uid },
 }: Action<IActivationPayload>) {
@@ -70,6 +52,44 @@ function* confirmationRegistrationSaga({
       })
     );
   } catch (e) {}
+}
+
+function* loginSaga({
+  payload: { username, password, email },
+}: Action<IUserAuth>) {
+  try {
+    yield put(sendLoginDataErrorAction(null));
+
+    const data: { data: ITokens } = yield call(() =>
+      AuthService.login({
+        password,
+        email,
+      })
+    );
+    const { access, refresh } = data?.data as any;
+
+    localStorage.setItem("access", access);
+    localStorage.setItem("refresh", refresh);
+
+    yield put(sendLoginDataSuccessAction(true));
+
+    const usersData: { data: ITokens } = yield call(() =>
+      AuthService.getUsers()
+    );
+
+    const users = usersData?.data as any;
+
+    yield put(setProfileAction(users.results[0]));
+
+    console.log({ users });
+  } catch (e) {
+    console.log({ e });
+    yield put(
+      sendLoginDataErrorAction(
+        "No active account found with the given credentials"
+      )
+    );
+  }
 }
 
 export function* authSaga() {

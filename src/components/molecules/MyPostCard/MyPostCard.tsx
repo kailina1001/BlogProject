@@ -7,7 +7,7 @@ import { PostText } from "../../atoms/PostText";
 import { PostTitle } from "../../atoms/PostTitle";
 import "./index.css";
 
-export const PostCard = memo((post: IPost) => {
+export const MyPostCard = memo((post: IPost) => {
   return (
     <div>
       <div className="post-card">
@@ -16,7 +16,6 @@ export const PostCard = memo((post: IPost) => {
         <PostText text={post.text} />
         <div className="post-date-creator">
           <PostDate date={post.date} />
-          <PostCreator name={String(post.author)} />
         </div>
       </div>
     </div>

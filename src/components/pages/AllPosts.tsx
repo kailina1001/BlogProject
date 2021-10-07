@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { memo } from "react";
 import { Title } from "../atoms/Title";
 import { BlogTemplate } from "../template/BlogTemplate";
@@ -12,12 +12,30 @@ import {
 } from "react-router-dom";
 import { AddBtn } from "../atoms/AddBtn";
 import { PostCard } from "../molecules/PostCard";
+import { posts } from "../../mock/index";
+import { IPost } from "../../types/posts";
+import { getPostsAction } from "../../core/actions/postsAction";
+import { useDispatch, useSelector } from "react-redux";
+import { getPostsState } from "../../core/selectors/postsSelectors";
+import { getAppState } from "../../core/selectors/appSelectors";
 
-export const AllPosts = memo(() => {
-  const history = useHistory();
-  /*   const allPosts = () => {
-    history.push("/all-posts");
-  }; */
+interface IPostList {
+  post: IPost[];
+}
+
+export const AllPosts = memo(({ post }: IPostList) => {
+  const dispatch = useDispatch();
+
+  const { posts } = useSelector(getPostsState);
+
+  const { username } = useSelector(getAppState);
+
+  useEffect(() => {
+    dispatch(getPostsAction());
+  }, [dispatch]);
+
+  console.log("Posts:", { posts });
+
   return (
     <div className="all-posts-page">
       <BlogTemplate
@@ -29,10 +47,11 @@ export const AllPosts = memo(() => {
         }
         mainBlock={
           <div className="blog-template-body">
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {posts?.map((post) => (
+              <div key={post.id}>
+                <PostCard key={post.id} {...post} />
+              </div>
+            ))}
           </div>
         }
       />

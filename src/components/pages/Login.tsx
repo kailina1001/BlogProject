@@ -24,7 +24,7 @@ import {
 export const Login = memo(() => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { password, email } = useSelector(getLoginSelector);
+  const { password, email, error, isSuccess } = useSelector(getLoginSelector);
 
   const isValidEmailLogin = validateEmail(email);
   const isValidPasswordLogin = validatePassword(password);
@@ -52,6 +52,12 @@ export const Login = memo(() => {
     }
   }; */
 
+  useEffect(() => {
+    if (isSuccess) {
+      history.push("/all-posts");
+    }
+  }, [history, isSuccess]);
+
   return (
     <div className="login-page">
       <MainTemplate
@@ -68,7 +74,7 @@ export const Login = memo(() => {
         }
         mainBlock={
           <div className="inputs-wrapper">
-            <form>
+            <div>
               <Input
                 text={"Email"}
                 type={"email"}
@@ -87,12 +93,14 @@ export const Login = memo(() => {
                   dispatch(setPasswordLoginAction(text.trim()))
                 }
               />
+
+              {error}
               <Button
                 text={"Login"}
                 isValid={isValidEmailLogin && isValidPasswordLogin}
                 onClick={loginUser}
               />
-            </form>
+            </div>
             <p>
               Forgot your password?{" "}
               <Link className="for-link" to={"/reset-password"}>

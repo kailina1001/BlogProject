@@ -104,33 +104,5 @@ export const Header = memo(() => {
         </div>
       </nav>
     </div>
-
-    /*  <div className={"header-title"}>
-        <button className="menu-btn" onClick={toggleMenu}>
-          <div id="hamburger" className={isOpenHeader ? "open" : ""}>
-            <div></div>
-          </div>
-        </button>
-
-        <Title title={"Header"} isActive={true} />
-      </div>
-
-      {isOpenHeader && (
-        <nav>
-          <ul className={"menu"}>
-            <li>
-              <Link className={"app"} to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/users/:id">User</Link>
-            </li>
-            <li>
-              <Link to="/users">Users </Link>
-            </li>
-          </ul>
-        </nav>
-      )} */
   );
 });

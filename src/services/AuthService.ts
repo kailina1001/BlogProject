@@ -70,7 +70,7 @@ class AuthAPIService extends BaseService {
     return this.post("jwt/create/", profile);
   }
 
-  public async getUsers(profile: IUserAuth) {
+  public async getUsers() {
     return this.get("users/");
   }
 
