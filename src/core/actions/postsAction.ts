@@ -11,6 +11,4 @@ export const setMyPostsAction = createAction(ACTIONS.SET_MY_POSTS)<
 
 export const getPostsAction = createAction(ACTIONS.GET_POSTS_ACTION)();
 
-export const getMyPostsAction = createAction(ACTIONS.GET_MY_POSTS_ACTION)<
-  IPost[] | null
->();
+export const getMyPostsAction = createAction(ACTIONS.GET_MY_POSTS_ACTION)();

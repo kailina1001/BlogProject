@@ -1,7 +1,6 @@
 import * as React from "react";
 import { memo } from "react";
 import { IPost } from "../../../types/posts";
-import { PostCreator } from "../../atoms/PostCreator";
 import { PostDate } from "../../atoms/PostDate";
 import { PostText } from "../../atoms/PostText";
 import { PostTitle } from "../../atoms/PostTitle";

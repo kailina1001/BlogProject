@@ -15,4 +15,5 @@ export const rootReducer = combineReducers({
   email_reset_password: resetPasswordReducer,
   new_password: newPasswordReducer,
   posts: postsReducer,
+  MyPosts: postsReducer,
 });

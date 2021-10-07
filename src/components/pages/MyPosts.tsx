@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { memo } from "react";
 import { Title } from "../atoms/Title";
 import { BlogTemplate } from "../template/BlogTemplate";
@@ -14,16 +14,26 @@ import { AddBtn } from "../atoms/AddBtn";
 import { IPost } from "../../types/posts";
 import { posts } from "../../mock/index";
 import { MyPostCard } from "../molecules/MyPostCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getAppState } from "../../core/selectors/appSelectors";
+import { getMyPostsState } from "../../core/selectors/myPostsSelectors";
+import { getMyPostsAction } from "../../core/actions/postsAction";
 
 interface IPostList {
   post: IPost[];
 }
 
 export const MyPosts = memo(({ post }: IPostList) => {
-  /*   const history = useHistory();
-  const allPosts = () => {
-    history.push("/");
-  }; */
+  const dispatch = useDispatch();
+  const { posts } = useSelector(getMyPostsState);
+  const { username } = useSelector(getAppState);
+
+  useEffect(() => {
+    dispatch(getMyPostsAction());
+  }, [dispatch]);
+
+  console.log("MyPosts:", { MyPosts });
+
   return (
     <div className="all-posts-page">
       <BlogTemplate
@@ -36,9 +46,7 @@ export const MyPosts = memo(({ post }: IPostList) => {
         mainBlock={
           <div className="blog-template-body">
             {posts?.map((post) => (
-              <div key={post.id}>
-                {/*  <MyPostCard key={post.id} {...post} /> */}
-              </div>
+              <div key={post.id}>{<MyPostCard key={post.id} {...post} />}</div>
             ))}
           </div>
         }

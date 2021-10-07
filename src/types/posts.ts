@@ -10,6 +10,16 @@ export interface IPost {
   author: number;
 }
 
+export interface IMyPost {
+  id: number;
+  image: string;
+  text: string;
+  date: string;
+  lesson_num: number;
+  title: string;
+  author: number;
+}
+
 export interface IPostsRequest {
   count: number;
   next: null | string;
