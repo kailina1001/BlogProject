@@ -62,9 +62,9 @@ class AuthAPIService extends BaseService {
     return this.post("users/activation/", activationPayload);
   }
 
-  public async signUp(profile: IUserAuth) {
+  /*   public async signUp(profile: IUserAuth) {
     return this.post("users/", profile);
-  }
+  } */
 
   public async login(profile: IUserLoginAuth) {
     return this.post("jwt/create/", profile);

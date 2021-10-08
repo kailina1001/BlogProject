@@ -44,7 +44,16 @@ export const Registration = memo(() => {
   );
 
   const registrationUser = () => {
-    if (
+    console.log({ userName });
+
+    dispatch(
+      sendRegistrationDataAction({
+        username: userName,
+        password,
+        email,
+      })
+    );
+    /*  if (
       isValidUserName &&
       isValidEmail &&
       isValidPassword &&
@@ -57,8 +66,8 @@ export const Registration = memo(() => {
           email,
         })
       );
-      history.push("/reg-confirmation");
-    }
+      /*  history.push("/reg-confirmation"); */
+    /* } */
   };
 
   return (

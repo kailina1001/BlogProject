@@ -59,19 +59,6 @@ export class BaseService {
 
     return { token, refresh };
   }
-  /*  public static async getTokens() {
-    const token = await localStorage.getItem("user_token");
-    const refresh = await localStorage.getItem("refresh_token");
-
-    if (token) {
-      return { type: "user", token, refresh };
-    }
-
-    const guestToken = await localStorage.getItem("guest_token");
-    const guestRefresh = await localStorage.getItem("guest_refresh_token");
-
-    return { type: "guest", token: guestToken, refresh: guestRefresh };
-  } */
 
   public set prefix(prefix: string | undefined) {
     this._prefix = prefix || "";

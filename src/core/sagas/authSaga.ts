@@ -18,7 +18,7 @@ function* registrationSaga({
 }: Action<IUserAuth>) {
   try {
     console.log({ username, password, email });
-    yield put(sendRegistrationDataErrorAction(null));
+    /*  yield put(sendRegistrationDataErrorAction(null)); */
 
     yield call(() =>
       AuthService.registration({
@@ -28,6 +28,8 @@ function* registrationSaga({
       })
     );
   } catch (e: any) {
+    console.log({ e });
+
     const error = Object.keys(e.response.data).reduce(
       (acc: string, field: string) => {
         const value = e.response.data[field];
@@ -51,7 +53,9 @@ function* confirmationRegistrationSaga({
         uid,
       })
     );
-  } catch (e) {}
+  } catch (e) {
+    console.log({ e });
+  }
 }
 
 function* loginSaga({
@@ -78,6 +82,8 @@ function* loginSaga({
     );
 
     const users = usersData?.data as any;
+
+    console.log({ usersData });
 
     yield put(setProfileAction(users.results[0]));
 

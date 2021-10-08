@@ -29,42 +29,40 @@ import { AddPost } from "./components/pages/AddPost";
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Switch>
-          <PublicRoute component={Home} path="/" exact />
-          <PublicRoute component={Login} path="/login" exact />
-          <PublicRoute component={Registration} path="/registration" exact />
-          <PublicRoute
-            component={RegConfirmation}
-            path="/reg-confirmation"
-            exact
-          />
-          <PublicRoute
-            component={SuccessRegistration}
-            path="/activate/:uid/:token"
-            exact
-          />
-          <PublicRoute component={ResetPassword} path="/reset-password" exact />
-          <PublicRoute
-            component={ResetPasswordConfirm}
-            path="/reset-password-confirm"
-            exact
-          />
-          <PublicRoute component={NewPassword} path="/new-password" exact />
-          <PublicRoute
-            component={SuccessNewPassword}
-            path="/success-new-password"
-            exact
-          />
+    <div>
+      <Switch>
+        <PublicRoute component={Home} path="/" exact />
+        <PublicRoute component={Login} path="/login" exact />
+        <PublicRoute component={Registration} path="/registration" exact />
+        <PublicRoute
+          component={RegConfirmation}
+          path="/reg-confirmation"
+          exact
+        />
+        <PublicRoute
+          component={SuccessRegistration}
+          path="/activate/:uid/:token"
+          exact
+        />
+        <PublicRoute component={ResetPassword} path="/reset-password" exact />
+        <PublicRoute
+          component={ResetPasswordConfirm}
+          path="/reset-password-confirm"
+          exact
+        />
+        <PublicRoute component={NewPassword} path="/new-password" exact />
+        <PublicRoute
+          component={SuccessNewPassword}
+          path="/success-new-password"
+          exact
+        />
 
-          <PublicRoute component={AllPosts} path="/all-posts" exact />
-          <PublicRoute component={MyPosts} path="/my-posts" exact />
-          <PublicRoute component={AddPost} path="/add-posts" exact />
-          <PublicRoute component={NotFound} exact />
-        </Switch>
-      </div>
-    </Router>
+        <PublicRoute component={AllPosts} path="/all-posts" exact />
+        <PublicRoute component={MyPosts} path="/my-posts" exact />
+        <PublicRoute component={AddPost} path="/add-posts" exact />
+        <PublicRoute component={NotFound} exact />
+      </Switch>
+    </div>
   );
 }
 /* return (
