@@ -1,8 +1,9 @@
+import { GuestService } from "./GuestService";
 import { BaseService } from "./BaseService";
 
 import { IUserAuth, IUserLoginAuth, IActivationPayload } from "../types/user";
 
-class AuthAPIService extends BaseService {
+class AuthAPIService extends GuestService {
   public async registration(profile: IUserAuth) {
     return this.post("users/", profile);
   }

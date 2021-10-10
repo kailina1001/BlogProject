@@ -1,25 +1,36 @@
 import axios from "axios";
+import { store } from "../core";
+import { refreshTokensService } from "./RefreshService";
 
 interface ICredentials {
   URL: string;
 }
-
 export const projectAxios = axios.create();
-
 projectAxios.interceptors.response.use(
   (res) => res,
   async (error) => {
-    const { status, data } = error.response;
+    const {
+      status,
+      data: { code },
+    } = error.response;
 
     if (status !== 401) {
       return Promise.reject(error);
     }
 
-    /*  if (status === 401 && code === "token_not_valid") {
+    if (status === 401 && code === "token_not_valid") {
       console.log({ code });
 
-      return Promise.reject(error);
-    } */
+      if (code.toLowerCase().indexOf("invalid refresh token") !== -1) {
+        // store.dispatch({ type: ACTIONS.LOG_OUT });
+
+        return;
+      }
+
+      const rts = new refreshTokensService(localStorage);
+
+      return rts.resetTokenAndReattemptRequest(error);
+    }
   }
 );
 
