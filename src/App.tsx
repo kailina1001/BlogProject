@@ -57,9 +57,9 @@ function App() {
           exact
         />
 
-        <PublicRoute component={AllPosts} path="/all-posts" exact />
-        <PublicRoute component={MyPosts} path="/my-posts" exact />
-        <PublicRoute component={AddPost} path="/add-posts" exact />
+        <PrivateRoute component={AllPosts} path="/all-posts" exact />
+        <PrivateRoute component={MyPosts} path="/my-posts" exact />
+        <PrivateRoute component={AddPost} path="/add-posts" exact />
         <PublicRoute component={NotFound} exact />
       </Switch>
     </div>

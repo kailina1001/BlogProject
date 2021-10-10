@@ -14,6 +14,12 @@ projectAxios.interceptors.response.use(
     if (status !== 401) {
       return Promise.reject(error);
     }
+
+    /*  if (status === 401 && code === "token_not_valid") {
+      console.log({ code });
+
+      return Promise.reject(error);
+    } */
   }
 );
 

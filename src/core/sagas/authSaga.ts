@@ -11,6 +11,8 @@ import { sendRegistrationDataErrorAction } from "./../actions/registrationAction
 import { AuthService } from "../../services/AuthService";
 import { getLoginSelector } from "../selectors/loginSelectors";
 import { sendLoginDataErrorAction } from "../actions/loginActions";
+import { PublicService } from "../../services/PublicService";
+import { UserService } from "../../services/UserService";
 
 /* function* sendRegistrationSaga({ */
 function* registrationSaga({
@@ -18,7 +20,7 @@ function* registrationSaga({
 }: Action<IUserAuth>) {
   try {
     console.log({ username, password, email });
-    /*  yield put(sendRegistrationDataErrorAction(null)); */
+    yield put(sendRegistrationDataErrorAction(null));
 
     yield call(() =>
       AuthService.registration({
@@ -78,7 +80,7 @@ function* loginSaga({
     yield put(sendLoginDataSuccessAction(true));
 
     const usersData: { data: ITokens } = yield call(() =>
-      AuthService.getUsers()
+      UserService.getUsers()
     );
 
     const users = usersData?.data as any;

@@ -1,5 +1,6 @@
 import { IPostsRequest } from "./../../types/posts";
 import { PostsService } from "./../../services/PostsService";
+import { PublicService } from "./../../services/PublicService";
 import { Action } from "redux-actions";
 import { ACTIONS } from "../actions/constants";
 import { call, put, takeEvery, select } from "redux-saga/effects";
@@ -10,7 +11,7 @@ function* getPostsSaga() {
     console.log("hello");
 
     const data: { data: IPostsRequest } = yield call(() =>
-      PostsService.getPosts()
+      PublicService.getPosts()
     );
     console.log({ data });
 
@@ -22,12 +23,10 @@ function* getMyPostsSaga() {
   try {
     console.log("bye");
 
-    const data: { data: IPostsRequest } = yield call(() =>
-      PostsService.getMyPosts()
-    );
+    const data: { data: any } = yield call(() => PostsService.getMyPosts());
     console.log({ data });
 
-    yield put(setMyPostsAction(data.data.results));
+    yield put(setMyPostsAction(data.data));
   } catch (e: any) {}
 }
 

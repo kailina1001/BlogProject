@@ -19,13 +19,13 @@ import { getAppState } from "../../core/selectors/appSelectors";
 import { getMyPostsState } from "../../core/selectors/myPostsSelectors";
 import { getMyPostsAction } from "../../core/actions/postsAction";
 
-interface IPostList {
+/* interface IPostList {
   post: IPost[];
-}
+} */
 
-export const MyPosts = memo(({ post }: IPostList) => {
+export const MyPosts = memo((/* { post }: IPostList */) => {
   const dispatch = useDispatch();
-  const { posts } = useSelector(getMyPostsState);
+  const { myPosts } = useSelector(getMyPostsState);
   const { username } = useSelector(getAppState);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export const MyPosts = memo(({ post }: IPostList) => {
         }
         mainBlock={
           <div className="blog-template-body">
-            {posts?.map((post) => (
+            {myPosts?.map((post) => (
               <div key={post.id}>{<MyPostCard key={post.id} {...post} />}</div>
             ))}
           </div>
