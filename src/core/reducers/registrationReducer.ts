@@ -1,3 +1,8 @@
+import {
+  sendRegistrationDataErrorAction,
+  sendRegistrationDataAction,
+  sendRegistrationDataSuccessAction,
+} from "./../actions/registrationActions";
 import { ActionType, createReducer } from "typesafe-actions";
 
 import { setEmailAction } from "../../core/actions";
@@ -10,6 +15,8 @@ export interface IRegistrationState {
   email: string;
   password: string;
   confirmPassword: string;
+  error: string | null;
+  isSuccess: boolean;
 }
 
 const defaultState: IRegistrationState = {
@@ -17,6 +24,8 @@ const defaultState: IRegistrationState = {
   email: "",
   password: "",
   confirmPassword: "",
+  error: null,
+  isSuccess: false,
 };
 
 const actions = {
@@ -24,6 +33,8 @@ const actions = {
   setUserNameAction,
   setPasswordAction,
   setConfirmPasswordAction,
+  sendRegistrationDataErrorAction,
+  sendRegistrationDataSuccessAction,
 };
 
 export const registrationReducer = createReducer<
@@ -47,5 +58,19 @@ export const registrationReducer = createReducer<
     (state, { payload: confirmPassword }) => ({
       ...state,
       confirmPassword,
+    })
+  )
+  .handleAction(
+    sendRegistrationDataErrorAction,
+    (state, { payload: error }) => ({
+      ...state,
+      error,
+    })
+  )
+  .handleAction(
+    sendRegistrationDataSuccessAction,
+    (state, { payload: isSuccess }) => ({
+      ...state,
+      isSuccess,
     })
   );

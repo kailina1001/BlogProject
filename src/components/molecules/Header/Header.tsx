@@ -44,6 +44,22 @@ export const Header = memo(() => {
                 Home
               </Link>
             </li>
+            {/*  <li>
+              <Link className="for-link" to={"/all-posts"}>
+                All Posts
+              </Link>
+            </li>
+            <li>
+              <Link className="for-link" to={"/my-posts"}>
+                My Posts
+              </Link>
+            </li>
+            <li>
+              <Link className="for-link" to={"/add-posts"}>
+                + Add Posts
+              </Link>
+            </li> */}
+
             <li>
               <Link className="for-link" to={"/login"}>
                 Login
@@ -54,7 +70,7 @@ export const Header = memo(() => {
                 Registration
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link className="for-link" to={"/reg-confirmation"}>
                 Registration Confirmation
               </Link>
@@ -83,38 +99,10 @@ export const Header = memo(() => {
               <Link className="for-link" to={"/success-new-password"}>
                 Success New Password
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>
     </div>
-
-    /*  <div className={"header-title"}>
-        <button className="menu-btn" onClick={toggleMenu}>
-          <div id="hamburger" className={isOpenHeader ? "open" : ""}>
-            <div></div>
-          </div>
-        </button>
-
-        <Title title={"Header"} isActive={true} />
-      </div>
-
-      {isOpenHeader && (
-        <nav>
-          <ul className={"menu"}>
-            <li>
-              <Link className={"app"} to="/">
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/users/:id">User</Link>
-            </li>
-            <li>
-              <Link to="/users">Users </Link>
-            </li>
-          </ul>
-        </nav>
-      )} */
   );
 });

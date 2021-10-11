@@ -333,6 +333,11 @@ textarea {
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  background: url(./components/img/cloud.png) no-repeat;
+  background-position: 100% 100%;
+  background-size: contain;
+  flex: 1 1 auto;
 }
 
 .login-text {
@@ -484,4 +489,68 @@ textarea {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.blog-template-title {
+  margin-top: 49px;
+  margin-left: 112px;
+  display: flex;
+}
+
+.blog-template-body {
+  margin-left: 112px;
+  margin-right: 219px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 341px);
+  grid-gap: 41px;
+  gap: 41px;
+  margin-bottom: 29px;
+}
+/* ///////////////////////////////////////////////////////// */
+.add-post-wrapper {
+  background-color: #0060dc;
+  width: calc(100%-130px);
+  height: 100%;
+  font-family: "Raleway";
+  font-style: normal;
+  text-decoration: #ffffff;
+  padding-left: 130px;
+  padding-top: 120px;
+  height: 100vh;
+}
+.add-new-post-title {
+  margin-left: 500px;
+}
+.add-post-title {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  line-height: 145.2%;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.add-post-inputs {
+  display: flex;
+  margin: 60px 0px 103px 225px;
+}
+.add-post-inputs-img {
+  margin-left: 100px;
+}
+.add-post-inputs-img h4 {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 29px;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+.add-post-main-input {
+  display: flex;
+  justify-content: center;
 }

@@ -14,7 +14,7 @@ export const Input = memo(
   ({ value, text, type, onChangeHandler, isValid }: IInput) => {
     return (
       <div>
-        <h4 className="input-text">{text}</h4>
+        <h4 className="input-text-wrap">{text}</h4>
         <input
           type={type}
           required

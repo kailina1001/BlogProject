@@ -1,36 +1,54 @@
 import { ActionType, createReducer } from "typesafe-actions";
 
-import { setEmailLoginAction } from "../actions/loginActions";
+import {
+  sendLoginDataErrorAction,
+  sendLoginDataSuccessAction,
+  setEmailLoginAction,
+} from "../actions/loginActions";
 
 import { setPasswordLoginAction } from "../actions/loginActions";
 
 export interface ILoginState {
-  email_login: string;
-  password_login: string;
+  email: string;
+  password: string;
+  error: string | null;
+  isSuccess: boolean;
 }
 
 const defaultState: ILoginState = {
-  email_login: "",
-  password_login: "",
+  email: "",
+  password: "",
+  error: null,
+  isSuccess: false,
 };
 
 const actions = {
   setEmailLoginAction,
   setPasswordLoginAction,
+  sendLoginDataErrorAction,
+  sendLoginDataSuccessAction,
 };
 
 export const loginReducer = createReducer<
   ILoginState,
   ActionType<typeof actions>
 >(defaultState)
-  .handleAction(setEmailLoginAction, (state, { payload: email_login }) => ({
+  .handleAction(setEmailLoginAction, (state, { payload: email }) => ({
     ...state,
-    email_login,
+    email,
+  }))
+  .handleAction(setPasswordLoginAction, (state, { payload: password }) => ({
+    ...state,
+    password,
+  }))
+  .handleAction(sendLoginDataErrorAction, (state, { payload: error }) => ({
+    ...state,
+    error,
   }))
   .handleAction(
-    setPasswordLoginAction,
-    (state, { payload: password_login }) => ({
+    sendLoginDataSuccessAction,
+    (state, { payload: isSuccess }) => ({
       ...state,
-      password_login,
+      isSuccess,
     })
   );

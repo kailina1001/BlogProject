@@ -1,9 +1,12 @@
 import { newPasswordReducer } from "./reducers/newPasswordReducer";
 import { resetPasswordReducer } from "./reducers/resetPasswordReducer";
-import { loginReducer } from "./reducers/loginReducer";
 import { combineReducers } from "redux";
-
-import { appReducer, registrationReducer } from "../core/reducers";
+import {
+  appReducer,
+  registrationReducer,
+  loginReducer,
+} from "../core/reducers";
+import { postsReducer } from "./reducers/postsReducer";
 
 export const rootReducer = combineReducers({
   app: appReducer,
@@ -11,4 +14,6 @@ export const rootReducer = combineReducers({
   login: loginReducer,
   email_reset_password: resetPasswordReducer,
   new_password: newPasswordReducer,
+  posts: postsReducer,
+  MyPosts: postsReducer,
 });

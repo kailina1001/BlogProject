@@ -20,9 +20,52 @@ import { ResetPasswordConfirm } from "./components/pages/ResetPasswordConfirm";
 import { NewPassword } from "./components/pages/NewPassword";
 import { SuccessNewPassword } from "./components/pages/SuccessNewPassword";
 import { Home } from "./components/pages/Home";
+import { PrivateRoute } from "./router/PrivateRoute";
+import { PublicRoute } from "./router/PublicRoute";
+import { NotFound } from "./components/pages/NotFound";
+import { AllPosts } from "./components/pages/AllPosts";
+import { MyPosts } from "./components/pages/MyPosts";
+import { AddPost } from "./components/pages/AddPost";
 
 function App() {
   return (
+    <div>
+      <Switch>
+        <PublicRoute component={Home} path="/" exact />
+        <PublicRoute component={Login} path="/login" exact />
+        <PublicRoute component={Registration} path="/registration" exact />
+        <PublicRoute
+          component={RegConfirmation}
+          path="/reg-confirmation"
+          exact
+        />
+        <PublicRoute
+          component={SuccessRegistration}
+          path="/activate/:uid/:token"
+          exact
+        />
+        <PublicRoute component={ResetPassword} path="/reset-password" exact />
+        <PublicRoute
+          component={ResetPasswordConfirm}
+          path="/reset-password-confirm"
+          exact
+        />
+        <PublicRoute component={NewPassword} path="/new-password" exact />
+        <PublicRoute
+          component={SuccessNewPassword}
+          path="/success-new-password"
+          exact
+        />
+
+        <PrivateRoute component={AllPosts} path="/all-posts" exact />
+        <PrivateRoute component={MyPosts} path="/my-posts" exact />
+        <PrivateRoute component={AddPost} path="/add-posts" exact />
+        <PublicRoute component={NotFound} exact />
+      </Switch>
+    </div>
+  );
+}
+/* return (
     <div className="app">
       <Router>
         <Switch>
@@ -57,6 +100,6 @@ function App() {
       </Router>
     </div>
   );
-}
+} */
 
 export default App;

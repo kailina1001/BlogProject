@@ -1,5 +1,5 @@
 import * as React from "react";
-import { memo } from "react";
+import { useEffect, memo } from "react";
 import { MainTemplate } from "../template/MainTemplate";
 import { Title } from "../atoms/Title/Title";
 import { Input } from "../atoms/Input";
@@ -11,13 +11,26 @@ import {
   Link,
   Redirect,
   useHistory,
+  useParams,
 } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { sendRegistrationConfirmationAction } from "../../core/actions/registrationActions";
 
 export const SuccessRegistration = memo(() => {
   const history = useHistory();
   const handlerChangePage = () => {
     history.push("/login");
   };
+  const params = useParams() as any;
+  const dispatch = useDispatch();
+  console.log(`params#####`, params);
+
+  useEffect(() => {
+    if (params?.uid && params?.token) {
+      dispatch(sendRegistrationConfirmationAction(params));
+    }
+  }, [dispatch, params, params?.token, params?.uid]);
+
   return (
     <div className="">
       <MainTemplate
