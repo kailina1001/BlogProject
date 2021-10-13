@@ -6,7 +6,11 @@ import { PostText } from "../../atoms/PostText";
 import { PostTitle } from "../../atoms/PostTitle";
 import "./index.css";
 
-export const MyPostCard = memo((post: IPost) => {
+interface IFoldedMyPost {
+  myPosts?: boolean;
+}
+
+export const MyPostCard = memo((post: IPost, { myPosts }: IFoldedMyPost) => {
   return (
     <div>
       <div className="post-card">

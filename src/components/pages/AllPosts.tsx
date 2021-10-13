@@ -38,7 +38,7 @@ export const AllPosts = memo(({ post }: IPostList) => {
 
   const history = useHistory();
   const addPost = () => {
-    history.push("/add-posts");
+    history.push("/posts/add");
   };
 
   return (
@@ -52,11 +52,13 @@ export const AllPosts = memo(({ post }: IPostList) => {
         }
         mainBlock={
           <div className="blog-template-body">
-            {posts?.map((post) => (
-              <div key={post.id}>
-                <PostCard key={post.id} {...post} />
-              </div>
-            ))}
+            {posts?.map((post) => {
+              return (
+                <Link key={post.id} to={`posts/${post.id}`}>
+                  <PostCard key={post.id} {...post} />
+                </Link>
+              );
+            })}
           </div>
         }
       />

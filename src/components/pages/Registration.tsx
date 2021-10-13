@@ -53,6 +53,7 @@ export const Registration = memo(() => {
         email,
       })
     );
+    /*     history.push("/reg-confirmation"); */
     /*  if (
       isValidUserName &&
       isValidEmail &&
