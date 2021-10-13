@@ -61,7 +61,7 @@ export const PrivateHeader = memo(() => {
                 </Link>
               </li>
               <li>
-                <Link className="for-link" to={"/add-posts"}>
+                <Link className="for-link" to={"/posts/add"}>
                   + Add Posts
                 </Link>
               </li>

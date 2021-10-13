@@ -1,6 +1,9 @@
 import { BaseService } from "./BaseService";
 
 class UserAPIService extends BaseService {
+  /* public async getUsers() {
+    return this.get("users/");
+  } */
   public async getUsers() {
     return this.get("");
   }

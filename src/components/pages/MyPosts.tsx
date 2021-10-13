@@ -19,11 +19,7 @@ import { getAppState } from "../../core/selectors/appSelectors";
 import { getMyPostsState } from "../../core/selectors/myPostsSelectors";
 import { getMyPostsAction } from "../../core/actions/postsAction";
 
-/* interface IPostList {
-  post: IPost[];
-} */
-
-export const MyPosts = memo((/* { post }: IPostList */) => {
+export const MyPosts = memo(() => {
   const dispatch = useDispatch();
   const { myPosts } = useSelector(getMyPostsState);
   const { username } = useSelector(getAppState);
@@ -36,7 +32,7 @@ export const MyPosts = memo((/* { post }: IPostList */) => {
 
   const history = useHistory();
   const addPost = () => {
-    history.push("/add-posts");
+    history.push("/posts/add");
   };
 
   return (
@@ -50,12 +46,24 @@ export const MyPosts = memo((/* { post }: IPostList */) => {
         }
         mainBlock={
           <div className="blog-template-body">
-            {myPosts?.map((post) => (
-              <div key={post.id}>{<MyPostCard key={post.id} {...post} />}</div>
-            ))}
+            {myPosts?.map((post) => {
+              return (
+                <Link key={post.id} to={`posts/${post.id}`}>
+                  <MyPostCard key={post.id} {...post} />
+                </Link>
+              );
+            })}
           </div>
         }
       />
     </div>
   );
 });
+
+{
+  /* <div className="blog-template-body">
+{myPosts?.map((post) => (
+  <div key={post.id}>{<MyPostCard key={post.id} {...post} />}</div>
+))}
+</div> */
+}

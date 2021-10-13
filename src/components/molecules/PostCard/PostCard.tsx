@@ -11,7 +11,13 @@ export const PostCard = memo((post: IPost) => {
   return (
     <div>
       <div className="post-card">
-        <img className="post-pic" src={post.image} alt={"post-pic"} />
+        <img
+          className="post-pic"
+          src={post.image}
+          alt={"post-pic"}
+          width={100}
+          height={100}
+        />
         <PostTitle title={post.title} />
         <PostText text={post.text} />
         <div className="post-date-creator">

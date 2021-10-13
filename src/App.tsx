@@ -26,6 +26,7 @@ import { NotFound } from "./components/pages/NotFound";
 import { AllPosts } from "./components/pages/AllPosts";
 import { MyPosts } from "./components/pages/MyPosts";
 import { AddPost } from "./components/pages/AddPost";
+import { SelectedPost } from "./components/pages/SelectedPost";
 
 function App() {
   return (
@@ -59,7 +60,8 @@ function App() {
 
         <PrivateRoute component={AllPosts} path="/all-posts" exact />
         <PrivateRoute component={MyPosts} path="/my-posts" exact />
-        <PrivateRoute component={AddPost} path="/add-posts" exact />
+        <PrivateRoute component={AddPost} path="/posts/add" exact />
+        <PrivateRoute component={SelectedPost} path="/posts/:id" />
         <PublicRoute component={NotFound} exact />
       </Switch>
     </div>
